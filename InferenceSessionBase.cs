@@ -1,4 +1,5 @@
-﻿using Noexia.MyAI.Models.Transport.WebSocket;
+﻿using Noexia.MyAI.Inferences.Core.Logs;
+using Noexia.MyAI.Models.Transport.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,7 +51,7 @@ namespace Noexia.MyAI.Inferences.Core
 
         protected virtual void AddUserToQueue(TUser user)
         {
-            Logs.LogsManager.Log("Inference", "Add user to queue");
+            LogsManager.Log("Inference", "Add user to queue");
             m_users.Enqueue(user);
         }
 
