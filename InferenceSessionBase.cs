@@ -63,7 +63,7 @@ namespace Noexia.MyAI.Inferences.Core
                 {
                     if (m_users.Count == 0 || CanSendInput() == false)
                     {
-                        Logs.LogsManager.Log("Inference :", "No user in queue, wait for new user " + m_users.Count + " " + CanSendInput());
+                        LogsManager.Log("Inference :", "No user in queue, wait for new user " + m_users.Count + " " + CanSendInput());
                         // No user in queue, wait for new user
                         // Use Thread.Sleep for minimize CPU usage
                         Thread.Sleep(QUEUE_UPDATE_INTERVAL_MS);
@@ -86,7 +86,7 @@ namespace Noexia.MyAI.Inferences.Core
                         // If timeout, stop inference input process
                         if (timeWatcher.ElapsedMilliseconds > MAX_TIME_INPUT_SECONDS * 1000)
                         {
-                            Logs.LogsManager.Log("Inference :", "Inference input process timeout");
+                            LogsManager.Log("Inference :", "Inference input process timeout");
                             onError?.Invoke("Inference input process timeout");
                             break;
                         }
@@ -106,13 +106,13 @@ namespace Noexia.MyAI.Inferences.Core
         protected virtual void OnInferenceInputFinished()
         {
             IsOnInputProcess = false;
-            Logs.LogsManager.Log("Inference :", "Inference input process totally finished");
+            LogsManager.Log("Inference :", "Inference input process totally finished");
         }
 
         protected virtual void OnInferenceInputStart()
         {
             IsOnInputProcess = true;
-            Logs.LogsManager.Log("Inference :", "Start inference input");
+            LogsManager.Log("Inference :", "Start inference input");
         }
 
         // Not a transport based method, but a method to 
