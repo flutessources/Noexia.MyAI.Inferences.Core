@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Noexia.MyAI.Inferences.Core
+﻿namespace Noexia.MyAI.Inferences.Core
 {
     // For an input and a output session (is not a peristant object)
     public interface IInferenceUser<TInput, TOutput>

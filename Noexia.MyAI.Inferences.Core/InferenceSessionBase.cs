@@ -1,11 +1,6 @@
 ﻿using Noexia.MyAI.Inferences.Core.Logs;
-using Noexia.MyAI.Models.Transport.WebSocket;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Noexia.MyAI.Inferences.Core
 {
@@ -42,6 +37,9 @@ namespace Noexia.MyAI.Inferences.Core
         /// <returns></returns>
         protected virtual TUser SendInput(TInput input, Action<TUser> beforeAddToqueue = null)
         {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
+
             var user = new TUser();
             user.input = input;
             beforeAddToqueue?.Invoke(user);
@@ -115,7 +113,7 @@ namespace Noexia.MyAI.Inferences.Core
             LogsManager.Log("Inference :", "Start inference input");
         }
 
-        // Not a transport based method, but a method to 
+        // Not a transport based method, but a method to notify
         protected void NotifyInferenceResult(TUser user, TOutput? result)
         {
             if (result == null)
